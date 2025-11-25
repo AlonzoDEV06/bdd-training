@@ -19,10 +19,10 @@ module.exports = class CartItem {
     //region public methods
     constructor(articleId, name, quantity, price) {
         //TODO Implement this method
-        this.#articleId(articleId);
-        this.#name(name);
-        this.quantity(quantity);
-        this.price(price);
+        this.#articleId = articleId;
+        this.#name = name;
+        this.quantity = quantity;
+        this.price = price;
     }
 
     get articleId() {
@@ -39,7 +39,7 @@ module.exports = class CartItem {
 
     set quantity(value) {
         //TODO Implement this method
-        this.#_quantity = value;
+        this.#_quantity = this.#validateQuantity(value);
     }
 
     get price() {
@@ -75,6 +75,10 @@ module.exports = class CartItem {
 
     #validateQuantity(quantity) {
         //TODO Implement this method
+        if (typeof(quantity) != 'number' || quantity < 1) {
+            throw new InvalidQuantityException("Invalid quantity: " + quantity);
+        }
+        return quantity;
     }
 
     #validatePrice(price) {
