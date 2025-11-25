@@ -39,7 +39,7 @@ module.exports = class CartItem {
 
     set quantity(value) {
         //TODO Implement this method
-        this.#_quantity = value;
+        this.#_quantity = this.#validateQuantity(value);
     }
 
     get price() {
@@ -48,7 +48,7 @@ module.exports = class CartItem {
 
     set price(value) {
         //TODO Implement this method
-        this.#_price = value;
+        this.#_price = this.#validatePrice(value);
 
     }
 
@@ -77,10 +77,18 @@ module.exports = class CartItem {
 
     #validateQuantity(quantity) {
         //TODO Implement this method
+        if (typeof(quantity) != 'number' || quantity < 1) {
+            throw new InvalidQuantityException("Invalid quantity: " + quantity);
+        }
+        return quantity;
     }
 
     #validatePrice(price) {
         //TODO Implement this method
+        if (typeof(price) != 'number' || price < 10) {
+            throw new InvalidPriceException("Invalid price: " + price);
+        }
+        return price;
     }
     //endregion private methods
 }
