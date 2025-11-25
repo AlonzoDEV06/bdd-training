@@ -8,11 +8,21 @@ module.exports = class CartItem {
 
     //region private attributes
     //TODO Missing private attributs
+    #_articleId;
+    #_name;
+    #_quantity;
+    #_price;
     //endregion private attributes
+
+
 
     //region public methods
     constructor(articleId, name, quantity, price) {
         //TODO Implement this method
+        this.#articleId(articleId);
+        this.#name(name);
+        this.quantity(quantity);
+        this.price(price);
     }
 
     get articleId() {
@@ -29,6 +39,7 @@ module.exports = class CartItem {
 
     set quantity(value) {
         //TODO Implement this method
+        this.#_quantity = value;
     }
 
     get price() {
@@ -37,6 +48,8 @@ module.exports = class CartItem {
 
     set price(value) {
         //TODO Implement this method
+        this.#_price = value;
+
     }
 
     get total() {
@@ -47,10 +60,13 @@ module.exports = class CartItem {
     //region private methods
     set #articleId(value) {
         //TODO Implement this method
+        this.#_articleId = value;
+
     }
 
     set #name(value) {
         //TODO Implement this method
+        this.#_name = value;
     }
 
     #validateArticleId(articleId) {
